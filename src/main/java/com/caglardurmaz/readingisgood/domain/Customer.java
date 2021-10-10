@@ -1,9 +1,15 @@
 package com.caglardurmaz.readingisgood.domain;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 public class Customer {
 
@@ -11,16 +17,10 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "customer_id")
-    private Set<Order> orders = new HashSet<>();
+    private String name;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Id
-    public Long getId() {
-        return id;
-    }
+    @Column(name="USER_NAME")
+    private String userName;
+    @Column(name="PASSWORD")
+    private String password;
 }
